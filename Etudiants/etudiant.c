@@ -18,10 +18,16 @@ int getInfo(char* pathToFile, Etudiant *mit) {
     }
     char row[2048];
     int i = 0;
-    while (fgets(row, sizeof(row), info) != NULL) {
-		sscanf(row, "%[^,],%[^,],%*[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^\n]",mit[i].nom, mit[i].prenom, mit[i].tel, mit[i].email, mit[i].adresse,mit[i].date, mit[i].lieu, mit[i].bacc, mit[i].genre, mit[i].cin, mit[i].github);
+    for (; fgets(row, sizeof(row), info) != NULL; i++) {
+	    row[strcspn(row, "\n")] = 0;
+	    int j = 0;
+	    for(char * t = strtok(row, ","); t; t = strtok(0, ","), j++){
+		    if(j == 2)
+			    mit[i].numero = atoi(t);
+		    else strcpy(((char(*)[256])&mit[i])[j], t);
+		}
+		
     }
-
     fclose(info);
     return i;
 }
