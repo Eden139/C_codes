@@ -1,51 +1,31 @@
 <!DOCTYPE html>
-<HTML lang="fr">
-	<HEAD>
-		<TITLE>Inscription mit</TITLE>
-		<meta charset="utf-8">
-		<style>
-			.inscript {
-				font-family : helvetica;
-				color : blue;
-			}
-		</style>
-	</HEAD>
+<html lang="fr">
+	<head>
+		<meta charset="utf-8"/>
+		<title>Inscription</title>
+	</head>
+	<body>
+		<h1><font color="darkblue">Formulaire d'inscription</font></h1>
 
-	<BODY>
-		<h1 STYLE="font-family: helvetica;text-align:center;size: 16px">Inscription</h1>
-
-		<FORM ACTION="file:///home/mit/definition.html" method="get">
-			<div class="inscript">
-				<p>Nom complet:</p>
-				<INPUT TYPE="text" NAME="anarana" PLACEHOLDER="Nom ex: Nomenjanahary"/>
-				<INPUT TYPE="text" NAME="fanampiny" PLACEHOLDER="Prénom ex : Dieu Donné"/>
-				<p>Date de naissance et lieu de naissance</p>
-				<INPUT TYPE="text" NAME="date" PLACEHOLDER="jj/mm/aaaa à Lot..."/>
-				<p>sexe			
-				<SELECT NAME="sexe">
-					<OPTION VALUE="0">feminin</OPTION>
-					<OPTION VALUE="1">masculin</OPTION>
-				</SELECT>
-				<p>Adresse</p>
-				<INPUT TYPE="text" NAME="adresse"/>
-				<p>Numéro d'inscription</p>
-				<INPUT TYPE="text" NAME="inscr"/>
-				<p>Série :
-					<SELECT NAME="serie">
-						<OPTION VALUE="0">C</OPTION>
-						<OPTION VALUE="1">S</OPTION>
-					</SELECT>
-				</p>
-				<p>
-				   Adresse Email : <INPUT STYLE="text" NAME="mail"/></p>
-				</p>
-				   Numéro Téléphone : <INPUT STYLE="text" NAME = "numero"/>
-				</p>
-				<INPUT TYPE="submit" NAME="Envoyer"/>
-			</div>
-
-		</FORM>
-
-	</BODY>
-
-</HTML>
+		<form method="get" id="id_form" action="">
+			<fieldset form="id_form">
+				<legend>Ma section de formulaire</legend>
+				<p>Nom : <input type="text" placeholder="NOMENJANAHARY" name="nom"/></p>
+				<p>Prénom : <input type="text" placeholder="Dieu donné" name="prenom"/></p>
+				<p>Date de naissance : <input name="naissance" type="date"/></p>
+				<p>Lieu de naissance : <input name="lieu" type="text"/></p>
+				<p>Numéro d'inscription : <input name="numero_inscription" type="number"/></p>
+				<p>Option : <input type="radio" name="serie">S<input type="radio" name="serie">C</p>
+				<label>Sexe :</label>
+				<select name="sexe">
+					<option value="0">Masculin</option>
+					<option value="1">Féminin</option>
+				</select>
+				<p>Année d'obtention du bacc : <input type="number" value="2023" name="year_of_bacc"/></p>
+				<p>Adresse e-mail : <input type="email"/></p>
+				<p>Parlez-nous de vous<br><textarea rows="10" cols="30" placeholder="Facultatif" name="a_propos" wrap="hard"></textarea></p>
+				<input type="submit" value="Envoyer"/>
+			</fieldset>
+		</form>
+	</body>
+</html>

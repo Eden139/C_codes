@@ -1,0 +1,34 @@
+
+	*** Comment jouer au jeu ? ***
+
+Dans ce jeu, votre but est de trouver un nombre entier entre 1 et 100 qui est généré aléatoirement par l'ordinateur
+Vous devez de ce fait entrer un ENTIER par votre clavier et pour ajuster la difficulté, vous ne pouvez faire que 7 essais(c'est-à-dire 7% de chance) sinon vous perdez.
+L'ordinateur vous aidera dans votre quête en affichant que votre nombre est trop petit ou trop grand.
+Voilà, vous savez toutes les principes du jeu, à vous de jouer !
+
+	*** Comment fonctionne le programme ?***
+Les étapes :
+
+1) Ce programme utilise 2 variables entières, l'un pour recevoir le nombre généré par l'ordinateur et l'autre pour recevoir en valeur le nombre entré par le joueur.
+	*Le nombre généré par l'ordinateur est donné par l'algorithme dans le livre Numerical Recipes donné par la formule :
+		n = 1 + (int)(100.0*rand() / (RAND_MAX + 1.0));
+		avec:
+			n la variable
+			(int) pour forcer en entier
+			RAND_MAX le nombre maximum donné par l'ordinateur
+			rand() la fonction qui permet d' avoir le nombre donné par l'ordinateur peut être initialisé par l'instruction srand
+
+	*L'autre variable servira de recepteur au  nombre donné par le joueur 
+
+2) Pour initialiser la fonction srand(), on a utilisé la fonction time(NULL) dans l'en-tête time.h qui permet de donner l'heure, ce qui permettra alors d'avoir un nouveau nombre aléatoire toutes les secondes.
+
+3) Enfin pour le traitement on a utilisé la boucle for , qui a pour condition que la boucle continue quand le nombre est toujours inférieur à 8
+	Dans cette boucle, on a :
+		Si i est inférieur(respectivement supérieur) à n, le programme affiche très petit(respectivement très grand) pour aider le joueur.
+			Dans ces conditions
+			- Le programme affiche par la fonction printf les nombres de coups restants du joueur par la fonction :
+				printf("%d\n", 7-i);
+			- Si le joueur a trouvé le nombre, on affiche que le joueur a gagné et  on sort de la boucle par la fonction break
+
+Et voilà, trois simples étapes pour programmer le meilleur jeu du monde.  
+			 
