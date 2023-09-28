@@ -40,6 +40,9 @@ int main(){
 						"thead th{"
 							"font-size: 19px;"
 						"}"
+						".close {"
+							"color: firebrick;"
+						"}"
 					"</style>"
 				"</head>"
 				"<body style=\"font-family: Sans-serif\">"
@@ -72,6 +75,7 @@ int main(){
 		if((open = strstr(row, "session opened for user ")) != NULL ||
 		   (close = strstr(row, "session closed for user ")) != NULL) {
 			sscanf(strstr(row, "pam_unix") + 9, "%m[^:]", &session_name);
+			int c = 0;
 			if(open != NULL) {
 				sscanf(open + 24, "%m[a-zA-Z0-9]", &user);
 				sscanf("opened", "%ms", &session);
@@ -79,8 +83,9 @@ int main(){
 			if(close != NULL) {
 				sscanf(close + 24, "%m[a-zA-Z0-9]", &user);
 				sscanf("closed", "%ms", &session);
+				c=1;
 			}
-			printf("<tr><th>%s</th><td>%s</td><td>%s</td><td>%s</td></tr>", user, session_name, session, time);
+			printf("<tr %s><th>%s</th><td>%s</td><td>%s</td><td>%s</td></tr>", c? "class=\"close\"":"",user, session_name, session, time);
 		}
 	}
 
